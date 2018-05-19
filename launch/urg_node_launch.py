@@ -19,12 +19,12 @@ def launch(descriptor, argv):
 
     # Handle the optional serial port argument
     name = "serial_port"
-    if name in argv:
+    if argv and (name in argv):
         args.extend(["--serial-port", argv[name]])
 
     # Handle the optional user latency argument
     name = "user_latency"
-    if name in argv:
+    if argv and (name in argv):
         args.extend(["--user-latency", argv[name]])
 
     add_node(descriptor, "urg_node", "urg_node", args=args)
