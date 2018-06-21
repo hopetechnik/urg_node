@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.5)
 project(urg_node)
 
+# Default to C++14
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+endif()
+
+
 find_package(ament_cmake REQUIRED)
 find_package(urg_node_msgs REQUIRED)
 find_package(diagnostic_updater REQUIRED)
@@ -16,8 +22,6 @@ find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(ros2_time REQUIRED)
 find_package(Boost REQUIRED thread)
-
-set_directory_properties(PROPERTIES COMPILE_OPTIONS "-std=c++11")
 
 set(INCLUDE_DIRS
   include
@@ -95,6 +99,10 @@ install(PROGRAMS
 
 # Install launch files
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
+
+
+#install params file
+install(FILES init_params.yaml DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   #find_package(ament_lint_auto REQUIRED)
