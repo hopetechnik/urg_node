@@ -53,3 +53,17 @@ A urdf file is already included and if you have succesfully ran an `ament build`
 ```
 
 The issue with using the first way is that the rate of publishing is hardcoded to only once every 30 seconds in the code for static_transform_publisher, which is very very low. If you still want to use the first option you can increase the rate in [this line](https://github.com/ros2/geometry2/blob/b4615514aa82f1f10d5b927d3fd4723aa31632ff/tf2_ros/src/static_transform_broadcaster_program.cpp#L156) in your local copy of ros2 repo.
+
+### Parameter
+
+To load parameters from yaml file use:
+
+```
+ros2 run urg_node urg_node __params:=<path to yaml file>
+```
+
+you can check parameter values using
+
+```
+ros2 param get urg_node <param name>
+```
